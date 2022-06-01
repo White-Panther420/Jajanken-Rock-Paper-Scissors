@@ -1,5 +1,4 @@
-/*This function will generate a random number 1-3 and assin it either rock, paper, or scissors
-then return the result thus making it seem like you're playing against a computer*/
+/*This function will generate a random number 1-3 and assin it either rock, paper, or scissors*/
 function computerPlay()
 {
     let randomNumber = Math.floor(Math.random() *3) + 1 //Generates a random number 1-3
@@ -50,9 +49,7 @@ function winner(playerSelection = "rock", computerSelection)
     }
 }
 
-/*This function will sumulate the game by taking in unput from the user and computer and 
-passing it to the winner function. Afterwards, it will take the result from the winner
-function and use it to calculate the score for each round*/
+/*This function will sumulate five rounds of Jajanken Rock-Paper-Scisors*/
 function game()
 {
     let roundResult;
