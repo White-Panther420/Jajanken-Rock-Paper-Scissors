@@ -1,0 +1,43 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(238, 235, 50);
+}
+
+.HxH_logo
+{
+    max-width:auto;
+    height: 200px;
+}
+
+.dialogue
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+}
+
+h1
+{
+    color: green;
+    font-weight: 1000;
+}
+
+.rps
+{
+    margin-top: 0;
+}
+
+span
+{
+    font-weight: 1000;
+    margin-bottom: 8px;
+    color: red;
+}
+
+p
+{
+    text-align: center;
+}

@@ -1,0 +1,60 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game_container
+{
+    display: flex;
+    justify-content: center;
+    gap: 84px;
+    background-color: rgb(238, 235, 50);
+    min-width: 70%;
+    max-width: 80%;
+}
+.player_side,
+.computer_side
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.player_text,
+.computer_text
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player_name,
+.computer_name
+{
+    font-weight: 1000;
+}
+
+.player_score,
+.computer_score
+{
+    font-weight: 1000;
+}
+
+.player_buttons
+{
+    display: flex;
+    gap:16px;
+    margin-top: 4px;
+}
+
+button
+{
+    height: 150px;
+    width: 100px;
+}
+
+.computer_buttons
+{
+    display: flex;
+    gap:16px;
+}
