@@ -1,8 +1,23 @@
 //Selecing the player's buttons to add event listeners to them
-
 const rock_btn = document.querySelector(".rock");
 const paper_btn = document.querySelector(".paper");
 const scissors_btn = document.querySelector(".scissors");
+
+//Selecting the score texts so we can update them with the correct scores after each round
+const p_score = document.querySelector(".player_score");
+const c_score = document.querySelector(".computer_score");
+
+//Div that will hold the text which indicates if the user won or lost the round as well as a reset
+//button which appears when the user or computer reaches a score of 5
+const round_result_div = document.querySelector(".round_result");
+const winLoseTie = document.createElement("p");
+const reset_btn = document.createElement("button");
+reset_btn.setAttribute("style", "background-color: red; color: black; font-weight: 1000; justify-content: center;");
+reset_btn.textContent = "Try Again";
+
+round_result_div.append(winLoseTie);
+
+//Global variables to access for each round played
 let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
@@ -21,6 +36,8 @@ scissors_btn.addEventListener("click", function(e) {
     playerSelection = "scissors";
     computerSelection = computerPlay();
     playRound(playerSelection, computerSelection)});
+
+reset_btn.addEventListener("click", resetGame);
 
 /*This function will generate a random number 1-3 and assin it either rock, paper, or scissors
 then return the result thus making it seem like you're playing against a computer*/
@@ -51,73 +68,76 @@ function computerPlay()
 /*This function will calculate the winner of a round and return the result*/
 function playRound(playerSelection = "rock", computerSelection)
 {
+    let winner;
     console.log(playerSelection);
     console.log(computerSelection);
     if(playerSelection === "paper" && computerSelection === "rock")
     {
-        roundResult = true;
+        winner = true;
     }
     else if(playerSelection === "rock" && computerSelection === "scissors")
     {
-        roundResult = true;
+        winner = true;
     }
     else if(playerSelection === "scissors" && computerSelection === "paper")
     {
-        roundResult = true;
+        winner = true;
     }
     else if(playerSelection === computerSelection)
     {
-        roundResult = "tie";
+        winner = "tie";
     }
     else if(playerSelection !== "rock" && playerSelection !== "paper" && playerSelection !== "scissors")  //An invalid option is entered
     {
-        roundResult = "error"
+        winner = "error"
     }
     else //Computer wins
     {
-        roundResult = false;
+        winner = false;
     }
 
-    game(roundResult);
+    game(winner);
 }
 
 /*This function will sumulate the game by taking in unput from the user and computer and 
 passing it to the winner function. Afterwards, it will take the result from the winner
 function and use it to calculate the score for each round*/
-function game(roundResult)
+function game(winner)
 {
-    if(roundResult === true)
+    if(winner === true)
     {
-        console.log("You win! Jajanken " + playerSelection + " beats jajanken " + computerSelection + "!");
-        playerScore++;
+        winLoseTie.textContent = "You win! Jajanken " + playerSelection + " beats jajanken " + computerSelection + "!";
+        p_score.textContent = ++playerScore;
     }
-    else if(roundResult === false)
+    else if(winner === false)
     {
-        console.log("You lose! Jajanken " + computerSelection + " beats jajanken " + playerSelection + "!");
-        computerScore++;
+        winLoseTie.textContent = "You lose! Jajanken " + computerSelection + " beats jajanken " + playerSelection + "!";
+        c_score.textContent = ++computerScore;
     }
-    else if(roundResult === "error")
+    else if(winner === "error")
     {
-        console.log("Invalid Option!");
+        winLoseTie.textContent = "Invalid Option!";
     }
     else
     {
-        console.log("tie!");
+        winLoseTie.textContent = "tie!";
     }
 
     console.log("Player: " + playerScore);
     console.log("Computer: " + computerScore);
-    
+
     if(playerScore >= 5)
     {
-        console.log("You win!");
-        resetGame();
+        winLoseTie.setAttribute("style", "color: green; font-weight:1000")
+        winLoseTie.textContent = 'HUMANITY IS SAVED! YOU WIN!!!';
+        round_result_div.append(reset_btn);
         return;
     }
     else if(computerScore >= 5)
     {
-        console.log("You lose!");
-        resetGame();
+        winLoseTie.setAttribute("style", "color: red; font-weight:1000")
+        winLoseTie.textContent = "YOU FOOL! HUMANITY IS DOOMED! YOU LOSE!!!";
+        round_result_div.append(reset_btn);
         return;
     }
     else
@@ -128,7 +148,9 @@ function game(roundResult)
 
 function resetGame()
 {
+    round_result_div.removeChild(reset_btn);
     playerScore = 0;
+    p_score.textContent = playerScore;
     computerScore = 0;
-    console.clear;
+    c_score.textContent = computerScore;
 }

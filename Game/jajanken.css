@@ -7,12 +7,37 @@ body
 .game_container
 {
     display: flex;
-    justify-content: center;
-    gap: 84px;
+    flex-direction: column;
+    align-items: center;
     background-color: rgb(238, 235, 50);
     min-width: 70%;
     max-width: 80%;
 }
+
+h1
+{
+    color: green;
+    font-weight: 1000;
+}
+
+.rps
+{
+    margin-top: -16px;
+}
+
+span
+{
+    font-weight: 1000;
+    margin-bottom: 8px;
+    color: red;
+}
+
+.game
+{
+    display: flex;
+    gap: 84px;
+}
+
 .player_side,
 .computer_side
 {
@@ -57,4 +82,10 @@ button
 {
     display: flex;
     gap:16px;
+}
+
+.round_result
+{
+    display: flex;
+    flex-direction: column;
 }
