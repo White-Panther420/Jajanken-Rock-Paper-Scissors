@@ -13,7 +13,7 @@ body
     flex-direction: column;
     align-items: center;
    /* background-color: rgb(238, 235, 50);*/
-    background-image: linear-gradient(yellow, orange);
+    background-image: linear-gradient(rgb(161, 118, 36), red);
     min-width: 100%;
     min-height: 100%;
     flex-grow: 1;
@@ -117,7 +117,31 @@ span
 button
 {
     height: 150px;
-    width: 100px;
+    width: 200px;
+}
+
+.rock
+{
+    background-image: url("../Images/jajanken_rock.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.paper
+{
+    background-image: url("../Images/jajanken_paper.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+.scissors
+{
+    background-image: url("../Images/jajanken_scissors.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
 }
 
 .final_result
