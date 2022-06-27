@@ -7,15 +7,23 @@ const scissors_btn = document.querySelector(".scissors");
 const p_score = document.querySelector(".player_score");
 const c_score = document.querySelector(".computer_score");
 
-//Div that will hold the text which indicates if the user won or lost the round as well as a reset
-//button which appears when the user or computer reaches a score of 5
 const round_result_div = document.querySelector(".round_result");
 const winLoseTie = document.createElement("p");
+winLoseTie.setAttribute("style", "font-weight: 1000;");
+round_result_div.append(winLoseTie);
+
+
+//Div that will hold the text which indicates if the user won or lost the game as well as a reset
+//button which appears when the user or computer reaches a score of 5
+const final_result_div = document.querySelector(".final_result");
+const final_message = document.createElement("p");
+final_result_div.append(final_message);
+
 const reset_btn = document.createElement("button");
-reset_btn.setAttribute("style", "background-color: red; color: black; font-weight: 1000; justify-content: center;");
+reset_btn.classList.add("reset_button");
 reset_btn.textContent = "Try Again";
 
-round_result_div.append(winLoseTie);
+
 
 //Global variables to access for each round played
 let playerSelection;
@@ -126,18 +134,28 @@ function game(winner)
     console.log("Player: " + playerScore);
     console.log("Computer: " + computerScore);
 
-    if(playerScore >= 5)
+    if(playerScore >= 2)
     {
-        winLoseTie.setAttribute("style", "color: green; font-weight:1000")
-        winLoseTie.textContent = 'HUMANITY IS SAVED! YOU WIN!!!';
-        round_result_div.append(reset_btn);
+        final_message.classList.add("Win_Message");
+        final_message.textContent = 'HUMANITY IS SAVED! YOU WIN!!!';
+        final_result_div.append(reset_btn);
+
+        //rock_btn.removeEventListener("click");
+        //paper_btn.removeEventListener("click");
+        //scissors_btn.removeEventListener("click");
+
         return;
     }
-    else if(computerScore >= 5)
+    else if(computerScore >= 2)
     {
-        winLoseTie.setAttribute("style", "color: red; font-weight:1000")
-        winLoseTie.textContent = "YOU FOOL! HUMANITY IS DOOMED! YOU LOSE!!!";
-        round_result_div.append(reset_btn);
+        final_message.classList.add("Loose_Message");
+        final_message.textContent = "YOU FOOL! HUMANITY IS DOOMED! YOU LOSE!!!";
+        final_result_div.append(reset_btn);
+
+        //rock_btn.removeEventListener("click");
+        //paper_btn.removeEventListener("click");
+        //scissors_btn.removeEventListener("click");
+
         return;
     }
     else
@@ -148,7 +166,10 @@ function game(winner)
 
 function resetGame()
 {
-    round_result_div.removeChild(reset_btn);
+    final_result_div.removeChild(reset_btn);
+    final_message.removeAttribute("class");  //Removes all present classes from the element
+    final_message.textContent = "";
+    winLoseTie.textContent = "";
     playerScore = 0;
     p_score.textContent = playerScore;
     computerScore = 0;

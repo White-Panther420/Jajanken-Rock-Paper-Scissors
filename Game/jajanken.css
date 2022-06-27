@@ -3,15 +3,20 @@ body
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
+
 .game_container
 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(238, 235, 50);
-    min-width: 70%;
-    max-width: 80%;
+   /* background-color: rgb(238, 235, 50);*/
+    background-image: linear-gradient(yellow, orange);
+    min-width: 100%;
+    min-height: 100%;
+    flex-grow: 1;
 }
 
 h1
@@ -25,6 +30,13 @@ h1
     margin-top: -16px;
 }
 
+h2
+{
+    color: black;
+    margin-top: -18px;
+    margin-bottom: 50px;
+}
+
 span
 {
     font-weight: 1000;
@@ -35,7 +47,6 @@ span
 .game
 {
     display: flex;
-    gap: 84px;
 }
 
 .player_side,
@@ -43,6 +54,30 @@ span
 {
     display: flex;
     flex-direction: column;
+    margin-right: auto;
+    width: 200px;
+    height: 300px;
+}
+
+.player_side
+{
+    background-color: aqua;
+}
+
+.round_result
+{
+    display: flex;
+    background-color: red;
+    width: 200px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.computer_side
+{
+    background-color: brown;
 }
 
 .player_text,
@@ -57,19 +92,26 @@ span
 .computer_name
 {
     font-weight: 1000;
+    font-size: 18px;
 }
 
+.computer_name
+{
+    margin-top: 15px;
+}
 .player_score,
 .computer_score
 {
     font-weight: 1000;
+    font-size: 18px;
+    margin-top: 0;
 }
 
 .player_buttons
 {
     display: flex;
     gap:16px;
-    margin-top: 4px;
+    margin-top: 50px;
 }
 
 button
@@ -78,14 +120,30 @@ button
     width: 100px;
 }
 
-.computer_buttons
-{
-    display: flex;
-    gap:16px;
-}
-
-.round_result
+.final_result
 {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.reset_button
+{
+    background-color: rgb(241, 110, 22); 
+    color: black; 
+    font-weight: 1000; 
+    width: 100px;
+    height: 50px;
+}
+
+.Win_Message
+{
+    color: green; 
+}
+
+.Loose_Message
+{
+    color: red; 
 }
