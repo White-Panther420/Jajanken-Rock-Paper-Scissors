@@ -9,7 +9,7 @@ const c_score = document.querySelector(".computer_score");
 
 const round_result_div = document.querySelector(".round_result");
 const winLoseTie = document.createElement("p");
-winLoseTie.setAttribute("style", "font-weight: 1000; font-size: 22px");
+winLoseTie.setAttribute("style", "font-weight: 700; font-size: 22px");
 round_result_div.append(winLoseTie);
 
 
@@ -37,15 +37,22 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-rock_btn.addEventListener("click", gameInitiator("rock"));    
-paper_btn.addEventListener("click", gameInitiator("paper"));
-scissors_btn.addEventListener("click", gameInitiator("scissors"));
+rock_btn.addEventListener("click", function(){
+    return gameInitiator("rock");  //Allows us to use parameters
+});    
+paper_btn.addEventListener("click", function(){
+    return gameInitiator("paper");
+});    
+scissors_btn.addEventListener("click", function(){
+    return gameInitiator("scissors");
+});    
 
 reset_btn.addEventListener("click", resetGame);
 
 //This function will begin the game when a button is clicked
-function gameInitiator(playerSelection)
+function gameInitiator(p_selection)
 {
+    playerSelection = p_selection;
     computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
 }
@@ -141,33 +148,17 @@ function game(winner)
 
     if(playerScore >= 5)
     {
-        rock_btn.removeEventListener("click", gameInitiator("rock"));
-        paper_btn.removeEventListener("click", gameInitiator("paper"));
-        scissors_btn.removeEventListener("click", gameInitiator("scissors"));
-
         final_message.classList.add("Win_Message");
         final_message.textContent = 'HUMANITY IS SAVED! YOU WIN!!!';
         final_result_div.append(reset_btn);
 
-        //rock_btn.removeEventListener("click");
-        //paper_btn.removeEventListener("click");
-        //scissors_btn.removeEventListener("click");
-
         return;
     }
     else if(computerScore >= 5)
-    {
-        rock_btn.removeEventListener("click", gameInitiator("rock"));
-        paper_btn.removeEventListener("click", gameInitiator("paper"));
-        scissors_btn.removeEventListener("click", gameInitiator("scissors"));
-        
+    { 
         final_message.classList.add("Loose_Message");
         final_message.textContent = "YOU FOOL! HUMANITY IS DOOMED! YOU LOSE!!!";
         final_result_div.append(reset_btn);
-
-        //rock_btn.removeEventListener("click");
-        //paper_btn.removeEventListener("click");
-        //scissors_btn.removeEventListener("click");
 
         return;
     }
