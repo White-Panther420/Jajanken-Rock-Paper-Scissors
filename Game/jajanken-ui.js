@@ -9,7 +9,7 @@ const c_score = document.querySelector(".computer_score");
 
 const round_result_div = document.querySelector(".round_result");
 const winLoseTie = document.createElement("p");
-winLoseTie.setAttribute("style", "font-weight: 1000;");
+winLoseTie.setAttribute("style", "font-weight: 1000; font-size: 22px");
 round_result_div.append(winLoseTie);
 
 
@@ -23,6 +23,13 @@ const reset_btn = document.createElement("button");
 reset_btn.classList.add("reset_button");
 reset_btn.textContent = "Try Again";
 
+/*Selecting player and computer side divs so we can display the choice 
+that both selected as an image*/
+const player_side = document.querySelector(".player_side");
+const computer_side = document.querySelector(".computer_side");
+
+const player_choice_img = document.createElement("img");
+const computer_choice_img = document.createElement("img");
 
 
 //Global variables to access for each round played
@@ -30,22 +37,18 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
-rock_btn.addEventListener("click", function(e) {
-    playerSelection = "rock";
-    computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection)});
-    
-paper_btn.addEventListener("click", function(e) {
-    playerSelection = "paper";
-    computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection)});
-
-scissors_btn.addEventListener("click", function(e) {
-    playerSelection = "scissors";
-    computerSelection = computerPlay();
-    playRound(playerSelection, computerSelection)});
+rock_btn.addEventListener("click", gameInitiator("rock"));    
+paper_btn.addEventListener("click", gameInitiator("paper"));
+scissors_btn.addEventListener("click", gameInitiator("scissors"));
 
 reset_btn.addEventListener("click", resetGame);
+
+//This function will begin the game when a button is clicked
+function gameInitiator(playerSelection)
+{
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+}
 
 /*This function will generate a random number 1-3 and assin it either rock, paper, or scissors
 then return the result thus making it seem like you're playing against a computer*/
@@ -55,20 +58,14 @@ function computerPlay()
 
     if(randomNumber === 1)
     {
-        //const button1 = document.querySelector(".C_rock");
-        //button1.setAttribute("style", "background: red;");
         return "rock";
     }
     else if(randomNumber === 2)
     {
-        //const button2 = document.querySelector(".C_paper");
-        //button2.setAttribute("style", "background: pink;");
         return "paper";
     }
     else    
     {
-        //const button3 = document.querySelector(".C_scissors");
-        //button3.setAttribute("style", "background: green;");
         return "scissors";
     }
 }
@@ -76,6 +73,14 @@ function computerPlay()
 /*This function will calculate the winner of a round and return the result*/
 function playRound(playerSelection = "rock", computerSelection)
 {
+    player_choice_img.src = `../Images/jajanken_${playerSelection}.jpg`;
+    computer_choice_img.src = `../Images/jajanken_${computerSelection}.jpg`;
+    player_choice_img.classList.add("choice_img");
+    computer_choice_img.classList.add("choice_img");
+
+    player_side.appendChild(player_choice_img);
+    computer_side.appendChild(computer_choice_img);
+
     let winner;
     console.log(playerSelection);
     console.log(computerSelection);
@@ -134,8 +139,12 @@ function game(winner)
     console.log("Player: " + playerScore);
     console.log("Computer: " + computerScore);
 
-    if(playerScore >= 2)
+    if(playerScore >= 5)
     {
+        rock_btn.removeEventListener("click", gameInitiator("rock"));
+        paper_btn.removeEventListener("click", gameInitiator("paper"));
+        scissors_btn.removeEventListener("click", gameInitiator("scissors"));
+
         final_message.classList.add("Win_Message");
         final_message.textContent = 'HUMANITY IS SAVED! YOU WIN!!!';
         final_result_div.append(reset_btn);
@@ -146,8 +155,12 @@ function game(winner)
 
         return;
     }
-    else if(computerScore >= 2)
+    else if(computerScore >= 5)
     {
+        rock_btn.removeEventListener("click", gameInitiator("rock"));
+        paper_btn.removeEventListener("click", gameInitiator("paper"));
+        scissors_btn.removeEventListener("click", gameInitiator("scissors"));
+        
         final_message.classList.add("Loose_Message");
         final_message.textContent = "YOU FOOL! HUMANITY IS DOOMED! YOU LOSE!!!";
         final_result_div.append(reset_btn);
@@ -164,12 +177,19 @@ function game(winner)
     }
 }
 
+//This function will clear the messages and scores displayed on the screan
+//as well as the choice images on both sides and rest button
 function resetGame()
 {
     final_result_div.removeChild(reset_btn);
     final_message.removeAttribute("class");  //Removes all present classes from the element
     final_message.textContent = "";
+   
     winLoseTie.textContent = "";
+    
+    player_side.removeChild(player_choice_img);
+    computer_side.removeChild(computer_choice_img);
+
     playerScore = 0;
     p_score.textContent = playerScore;
     computerScore = 0;

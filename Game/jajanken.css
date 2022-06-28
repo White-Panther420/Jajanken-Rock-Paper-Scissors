@@ -13,7 +13,7 @@ body
     flex-direction: column;
     align-items: center;
    /* background-color: rgb(238, 235, 50);*/
-    background-image: linear-gradient(rgb(161, 118, 36), red);
+    background-image: linear-gradient(#FF8000, red);
     min-width: 100%;
     min-height: 100%;
     flex-grow: 1;
@@ -32,9 +32,9 @@ h1
 
 h2
 {
-    color: black;
+    color: rgb(255, 255, 255);
     margin-top: -18px;
-    margin-bottom: 50px;
+    margin-bottom: 0;
 }
 
 span
@@ -47,6 +47,7 @@ span
 .game
 {
     display: flex;
+    margin-bottom: 0;
 }
 
 .player_side,
@@ -57,27 +58,34 @@ span
     margin-right: auto;
     width: 200px;
     height: 300px;
+    align-items: center;
 }
 
+/*
 .player_side
 {
-    background-color: aqua;
-}
-
-.round_result
-{
-    display: flex;
     background-color: red;
-    width: 200px;
-    height: 300px;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
 
 .computer_side
 {
-    background-color: brown;
+    background-color: green;
+}
+
+.round_result
+{
+    background-color: purple;
+}
+*/
+.round_result
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    width: 200px;
+    height: 300px;
 }
 
 .player_text,
@@ -91,6 +99,7 @@ span
 .player_name,
 .computer_name
 {
+    color: white;
     font-weight: 1000;
     font-size: 18px;
 }
@@ -99,9 +108,11 @@ span
 {
     margin-top: 15px;
 }
+
 .player_score,
 .computer_score
 {
+    color: white;
     font-weight: 1000;
     font-size: 18px;
     margin-top: 0;
@@ -110,14 +121,15 @@ span
 .player_buttons
 {
     display: flex;
-    gap:16px;
-    margin-top: 50px;
+    gap: 32px;
+    margin-top: -25px;
 }
 
-button
+button,
+.choice_img
 {
-    height: 150px;
-    width: 200px;
+    height: 125px;
+    width: 175px;
 }
 
 .rock
@@ -142,6 +154,21 @@ button
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+}
+
+.button_names
+{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+    width: 595px;
+}
+
+.button_text
+{
+    color: white;
+    font-weight: 1000;
+    text-align: center;
 }
 
 .final_result
