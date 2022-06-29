@@ -12,8 +12,7 @@ body
     display: flex;
     flex-direction: column;
     align-items: center;
-   /* background-color: rgb(238, 235, 50);*/
-    background-image: linear-gradient(#FF8000, red);
+    background-color: rgb(238, 235, 50);
     min-width: 100%;
     min-height: 100%;
     flex-grow: 1;
@@ -32,7 +31,7 @@ h1
 
 h2
 {
-    color: rgb(255, 255, 255);
+    color: rgb(255, 56, 59);
     margin-top: -18px;
     margin-bottom: 0;
 }
@@ -61,30 +60,51 @@ span
     align-items: center;
 }
 
-/*
+
 .player_side
-{
-    background-color: red;
+{   
+    margin-right: 100px;
 }
 
 .computer_side
 {
-    background-color: green;
+    margin-left: 100px;
 }
 
-.round_result
+.player_empty_square
 {
-    background-color: purple;
+    display: flex;
+    border: 4px solid green;
+    justify-content: center;
+    align-items: center;
 }
-*/
+
+.computer_empty_square
+{
+    display: flex;
+    border: 4px solid red;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice_img
+{
+    border: 4px solid green;
+}
+
+.evil_choice_img
+{
+    border: 4px solid red;
+}
+
 .round_result
 {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 10px;
-    width: 200px;
+    margin-top: 30px;
+    width: 300px;
     height: 300px;
 }
 
@@ -99,9 +119,9 @@ span
 .player_name,
 .computer_name
 {
-    color: white;
+    color: rgb(255, 56, 59);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 .computer_name
@@ -112,21 +132,32 @@ span
 .player_score,
 .computer_score
 {
-    color: white;
+    color: rgb(255, 56, 59);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 22px;
     margin-top: 0;
+}
+
+.choose_wpn_msg
+{
+    margin-bottom: 12px;
+    font-weight: 1000;
+    font-size: 24px;
+    color: green;
 }
 
 .player_buttons
 {
     display: flex;
     gap: 32px;
-    margin-top: -25px;
+    margin-top: 0px;
 }
 
 button,
-.choice_img
+.choice_img,
+.evil_choice_img,
+.player_empty_square,
+.computer_empty_square
 {
     height: 125px;
     width: 175px;
@@ -138,6 +169,7 @@ button,
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+    border: 4px solid green;
 }
 
 .paper
@@ -146,6 +178,7 @@ button,
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+    border: 4px solid green;
 }
 
 .scissors
@@ -154,6 +187,7 @@ button,
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
+    border: 4px solid green;
 }
 
 .button_names
@@ -166,8 +200,9 @@ button,
 
 .button_text
 {
-    color: white;
-    font-weight: 700;
+    color: rgb(255, 56, 59);
+    font-weight: 1000;
+    font-size: 22px;
     text-align: center;
 }
 
@@ -191,10 +226,12 @@ button,
 
 .Win_Message
 {
-    color: blue; 
+    font-weight: 1000;
+    color: green; 
 }
 
 .Loose_Message
 {
-    color: blue; 
+    font-weight: 1000;
+    color: red; 
 }

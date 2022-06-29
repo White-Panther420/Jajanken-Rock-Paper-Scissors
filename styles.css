@@ -8,7 +8,8 @@ body
 .HxH_logo
 {
     max-width:auto;
-    height: 200px;
+    height: 150px;
+    margin-bottom: 12px;
 }
 
 .dialogue
@@ -19,15 +20,21 @@ body
     width: 600px;
 }
 
+.dialogue p
+{
+    font-weight: 700;
+}
+
 h1
 {
     color: green;
     font-weight: 1000;
+    margin-top: 12px;
 }
 
 .rps
 {
-    margin-top: 0;
+    margin-top: -16px;
 }
 
 span
@@ -35,6 +42,18 @@ span
     font-weight: 1000;
     margin-bottom: 8px;
     color: red;
+}
+
+.begin
+{
+    color: red;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+a
+{
+    text-decoration: none
 }
 
 p

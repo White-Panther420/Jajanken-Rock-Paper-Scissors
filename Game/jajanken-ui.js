@@ -9,7 +9,7 @@ const c_score = document.querySelector(".computer_score");
 
 const round_result_div = document.querySelector(".round_result");
 const winLoseTie = document.createElement("p");
-winLoseTie.setAttribute("style", "font-weight: 700; font-size: 22px");
+winLoseTie.setAttribute("style", "font-weight: 700; font-size: 28px");
 round_result_div.append(winLoseTie);
 
 
@@ -25,8 +25,8 @@ reset_btn.textContent = "Try Again";
 
 /*Selecting player and computer side divs so we can display the choice 
 that both selected as an image*/
-const player_side = document.querySelector(".player_side");
-const computer_side = document.querySelector(".computer_side");
+const player_empty_square = document.querySelector(".player_empty_square");
+const computer_empty_square = document.querySelector(".computer_empty_square");
 
 const player_choice_img = document.createElement("img");
 const computer_choice_img = document.createElement("img");
@@ -81,12 +81,12 @@ function computerPlay()
 function playRound(playerSelection = "rock", computerSelection)
 {
     player_choice_img.src = `../Images/jajanken_${playerSelection}.jpg`;
-    computer_choice_img.src = `../Images/jajanken_${computerSelection}.jpg`;
+    computer_choice_img.src = `../Images/evil_jajanken_${computerSelection}.jpg`;
     player_choice_img.classList.add("choice_img");
-    computer_choice_img.classList.add("choice_img");
+    computer_choice_img.classList.add("evil_choice_img");
 
-    player_side.appendChild(player_choice_img);
-    computer_side.appendChild(computer_choice_img);
+    player_empty_square.appendChild(player_choice_img);
+    computer_empty_square.appendChild(computer_choice_img);
 
     let winner;
     console.log(playerSelection);
@@ -178,8 +178,8 @@ function resetGame()
    
     winLoseTie.textContent = "";
     
-    player_side.removeChild(player_choice_img);
-    computer_side.removeChild(computer_choice_img);
+    player_empty_square.removeChild(player_choice_img);
+    computer_empty_square.removeChild(computer_choice_img);
 
     playerScore = 0;
     p_score.textContent = playerScore;
