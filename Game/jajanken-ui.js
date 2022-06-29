@@ -89,12 +89,7 @@ function playRound(playerSelection = "rock", computerSelection)
     computer_empty_square.appendChild(computer_choice_img);
 
     let winner;
-<<<<<<< Updated upstream
-    console.log(playerSelection);
-    console.log(computerSelection);
-=======
 
->>>>>>> Stashed changes
     if(playerSelection === "paper" && computerSelection === "rock")
     {
         winner = true;
@@ -147,12 +142,6 @@ function game(winner)
         winLoseTie.textContent = "tie!";
     }
 
-<<<<<<< Updated upstream
-    console.log("Player: " + playerScore);
-    console.log("Computer: " + computerScore);
-
-=======
->>>>>>> Stashed changes
     if(playerScore >= 5)
     {
         final_message.classList.add("Win_Message");
@@ -171,11 +160,7 @@ function game(winner)
     }
     else
     {
-<<<<<<< Updated upstream
-        console.log("ONTO THE NEXT ROUND!");
-=======
         final_message.textContent = "ONTO THE NEXT ROUND!";
->>>>>>> Stashed changes
     }
 }
 
